@@ -1,0 +1,60 @@
+{% extends "home.html" %}
+
+{% block pagehead %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='products.css') }}">
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+{% endblock %}
+
+{% block rest %}
+
+<div class="content">
+  <form method="POST" action="{{ url_for('delete') }}" >
+
+    <table class="responsive-table" id="responsive-table">
+        <caption>Products Table</caption>
+        <thead>
+          <tr>
+            <th scope="col">Mark</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Ideal Product Performance(per minute)</th>
+            <th scope="col">Product Weight (g)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(0, numberOfRows) %}
+                <tr>
+                    <td class="exclude" value="{{rows[i][0]}}"><input type="checkbox" id="check" name="checkedList" value="{{rows[i][0]}}"></td>
+                    <td value="{{rows[i][1]}}"><input type="hidden" id="productname" name="productname" value="{{rows[i][1]}}">{{rows[i][1]}}</td>
+                    <td value="{{rows[i][2]}}"><input type="hidden" id="ideal" name="ideal" value="{{rows[i][2]}}">{{rows[i][2]}}</td>
+                    <td value="{{rows[i][3]}}"><input type="hidden" id="weight" name="weight" value="{{rows[i][3]}}">{{rows[i][3]}}</td>
+                </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="delete" id="delete">Delete</button>
+  </form>
+
+  <button class="edit" id="edit" onclick="edit('products')">Edit</button>
+  <div id="Apply"></div>
+  <button class="add" onclick="add('products')">Add</button>
+
+
+  <!-- form to add product if user wnat to add products to table -->
+  <div id="addproduct">
+    <form method="POST" action=" {{ url_for('products')}}">
+      <table>
+        <tr>
+          <td><input type="text" id="productname" name="productname" placeholder="Product Name" class="type-1" required></td>
+          <td><input type="number" step="any" id="idealperformance" name="idealperformance" placeholder="Ideal Product Performance" class="type-1" required></td>
+          <td><input type="number" step="any" id="weight" name="weight" placeholder="weight" class="type-1" required></td>
+          <td><button class="submit" type="submit">Submit</button></td>
+        </tr>
+      </table> 
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

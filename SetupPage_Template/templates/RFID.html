@@ -1,0 +1,58 @@
+{% extends "home.html" %}
+
+{% block pagehead %}
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='RFID.css') }}"> 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+{% endblock %}
+
+{% block rest %}
+
+<div class="content">
+  <form method="POST" action="{{ url_for('RFID_delete') }}" >
+
+    <table class="responsive-table" id="responsive-table">
+        <caption>RFID Table</caption>
+        <thead>
+          <tr>
+            <th scope="col">Mark</th>
+            <th scope="col">Code</th>
+            <th scope="col">Operator Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(0, rfidNumberOfRows) %}
+                <tr>
+                    <td class="exclude" value="{{rfidRows[i][0]}}"><input type="checkbox" id="check" name="rfidcheckedList" value="{{rfidRows[i][0]}}"></td>
+                    <td value="{{rfidRows[i][1]}}"><input type="hidden" id="Code" name="Code" value="{{rfidRows[i][1]}}">{{rfidRows[i][1]}}</td>
+                    <td value="{{rfidRows[i][2]}}"><input type="hidden" id="ideal" name="ideal" value="{{rfidRows[i][2]}}">{{rfidRows[i][2]}}</td>
+                </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="delete" id="delete">Delete</button>
+  </form>
+
+  
+  
+  <button class="edit" id="edit" onclick="edit('RFID')">Edit</button>
+  <div id="Apply"></div>
+  <button class="add" onclick="add('rfid')">Add</button>
+
+  <!-- form to add product if user want to add products to table -->
+  <div id="addcode">
+    <form method="POST" action=" {{ url_for('RFID')}}">
+      <table>
+        <tr>
+          <td><input type="text" id="code" name="code" placeholder="Code" class="type-1" required></td>
+          <td><input type="text" step="any" id="operatorname" name="operatorname" placeholder="Operator Name" class="type-1" required></td>
+          <td><button class="submit" type="submit">Submit</button></td>
+        </tr>
+      </table> 
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

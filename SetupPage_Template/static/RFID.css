@@ -1,0 +1,145 @@
+
+.content{
+    position: fixed;
+    top: 0px;
+    width: 90%;
+    display: inline-block;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .responsive-table {
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 30px;
+    padding: 2px;
+    border-collapse: collapse;
+  }
+  
+  .responsive-table tbody tr:nth-child(even){
+    background-color: #f9f9f917;
+  }
+  
+  .responsive-table caption {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    padding: 5px;
+    font-size: 25px; 
+    text-align: center;
+    border: 1px solid black;
+  }
+  
+  .responsive-table th {
+    background-color: #f2f2f2;
+    }
+    
+  .responsive-table tbody tr:hover {
+    background-color: #eaf2ff;
+  }
+  
+  .add{
+    display: inline-block;
+    width: 150px;
+    position: relative;
+    margin: 20px 0px 0px 10px;
+    padding: 10px;
+  }
+  .add:hover{
+    background-color: aquamarine;
+  }
+  #addcode{
+    position: absolute;
+    display: none;
+    margin: 5px 0px 0px 5px;
+  }
+  #addcode input{
+    width: 100%;
+    padding: 0%;
+  }
+  .type-1{
+    border: 1px solid black;
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    margin: 12px 5px 5px 5px;
+  }
+  .submit{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 33px;
+    margin-left: 5px;
+    margin-top: 11px;
+  }
+  
+  .submit:hover{
+    background-color: aquamarine;
+  }
+  
+  .edit{
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 15px 0px 0px 10px;
+    padding: 10px;
+  }
+  .edit:hover{
+    background-color: aquamarine;
+  }
+  .delete{
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 15px 0px 0px 10px;
+    padding: 10px;
+  }
+  
+  .delete:hover{
+    background-color: aquamarine;
+  }
+  #Apply_Button:hover{
+    background-color: aquamarine;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    .content {
+      position: absolute;
+      top: 150px;
+      width: 100%;
+      display: inline-block;
+      height: 70vh;
+      overflow: scroll;
+    }
+    .add{
+      display: block;
+      position: relative;
+    }
+    #addcode{
+      position: relative;
+      /* margin-top: 10px; */
+      left: 0px;
+      display: none;
+      margin: 5px 0px 0px 5px;
+    }
+    .edit{
+      position: relative;
+      display: block;
+    }
+    .responsive-table tbody tr td input{
+      width: 100%;
+    }
+    .responsive-table th,
+    .responsive-table td {
+      padding: 5px;
+      font-size: 10px; 
+      text-align: center;
+      border: 1px solid black;
+  }
+  
+  }

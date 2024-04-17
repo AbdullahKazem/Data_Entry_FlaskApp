@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}"> 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+{% block pagehead %}{% endblock %}
+
+{% endblock head %}
+
+
+{% block content %}
+<div style="float: right;">
+    <button class="logout" id="logout" onclick="movetologin()">logout</button>
+</div>
+<div class="sidebar">
+    <img class="sidelogo" src="https://www.bestforjuice.com/assets/layout/img/logo.png" alt="logo">
+    
+    <button class="inputs" id = "inputs" onclick="movetohome()">Input</button>
+    <button class="products" id = "products" onclick="movetoproducts()">Products</button>
+    <button class="RFID" id = "RFID" onclick="movetoRFID()">RFID</button>
+
+</div>
+
+{% block rest %}
+
+{% endblock %}
+
+{% endblock content%}

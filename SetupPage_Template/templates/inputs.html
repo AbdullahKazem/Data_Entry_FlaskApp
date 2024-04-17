@@ -1,0 +1,70 @@
+{% extends "home.html" %}
+
+{% block pagehead %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='inputs.css') }}"> 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+{% endblock %}
+
+{% block rest %}
+
+<div class="inputform">
+    <form  method="POST" action="{{url_for('send')}}" onsubmit="return validateForm()" >
+        <!-- Label and Dropdown line name -->
+        <label for="machinename">Select The Line:</label>
+        <select class="machinename" id="machinename" name="machinename" required>
+                <option value="">-- Select --</option>
+            {% for i in range(0, 3) %}
+                <option id="{{i}}" name="machinename" value="Line {{i+1}}">Line {{i+1}}</option>
+            {% endfor %}
+        </select>
+        <!-- Label and Dropdown products name -->
+        <label for="productname">Select The Product:</label>
+        <select class="productname" id="productname" name="products" required>
+                <option value="">-- Select --</option>
+            {% for i in range(0, len) %}
+                <option id="{{i}}" name="products" value="{{names[i][0]}}">{{names[i][0]}}</option>
+            {% endfor %}
+                
+        </select>
+        <!-- Label and Textbox target amount -->
+        <label for="ordernumber">Order Number:</label>
+        <input type="text" id="ordernumber" name="ordernumber" placeholder="Enter Order Number" required>
+        <!-- Label and Textbox target amount -->
+        <label for="targets">Target Amount:</label>
+        <input type="text" id="targets" name="targets" placeholder="Enter Target Amount" required>
+        <!-- Submit Button -->
+        <input type="submit" value="Submit" onclick="getData()">
+
+    </form>
+
+</div>
+
+<div class="orders">
+    
+    <table class="order_responsive_table" id="order_responsive_table">
+        <caption>Orders Table</caption>
+        <thead>
+            <tr>
+              <th scope="col">Machine Name</th>
+              <th scope="col">Order Number</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Target Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(0, orderLen) %}
+                <tr>
+                    <td value="{{orderrows[i][0]}}">{{orderrows[i][0]}}</td>
+                    <td value="{{orderrows[i][1]}}">{{orderrows[i][1]}}</td>
+                    <td value="{{orderrows[i][2]}}">{{orderrows[i][2]}}</td>
+                    <td value="{{orderrows[i][3]}}">{{orderrows[i][3]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  
+</div>
+  
+{% endblock %}
